@@ -1,10 +1,16 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-$query = require 'core\bootstrap.php';
+require 'vendor\autoload.php';
+require 'core\bootstrap.php';
+
+use App\Core\{Router, Request};
 
 
 
 
 
-require Router::load('routes.php')->direct(Request::uri());
+Router::load('app/routes.php')->direct(Request::uri(), Request::method());
 
